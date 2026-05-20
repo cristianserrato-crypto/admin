@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cerbis — Panel de actividad</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/admin.css">
+</head>
+<body>
+    <div id="login-screen" class="screen active">
+        <form id="login-form" class="login-card">
+            <h1>Panel Cerbis</h1>
+            <p>Visitas y conversaciones por IP y fecha</p>
+            <input type="password" id="admin-token" placeholder="Token de administrador" autocomplete="current-password" required>
+            <button type="submit">Entrar</button>
+            <p id="login-error" class="error" hidden></p>
+        </form>
+    </div>
+
+    <div id="dashboard-screen" class="screen">
+        <header class="topbar">
+            <div class="brand">
+                <span class="dot"></span>
+                <h1>Actividad ia-amigo</h1>
+            </div>
+            <div class="topbar-actions">
+                <label>
+                    Fecha
+                    <select id="date-select"></select>
+                </label>
+                <button type="button" id="btn-refresh">Actualizar</button>
+                <button type="button" id="btn-logout" class="ghost">Salir</button>
+            </div>
+        </header>
+
+        <section class="stats" id="stats-row"></section>
+
+        <nav class="tabs">
+            <button type="button" class="tab active" data-tab="visits">Visitas (IP)</button>
+            <button type="button" class="tab" data-tab="conversations">Conversaciones</button>
+        </nav>
+
+        <main class="panels">
+            <section id="panel-visits" class="panel active">
+                <h2>IPs que abrieron la página</h2>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>IP</th>
+                                <th>Visitas</th>
+                                <th>Primera</th>
+                                <th>Última</th>
+                            </tr>
+                        </thead>
+                        <tbody id="visits-by-ip"></tbody>
+                    </table>
+                </div>
+                <h3>Detalle de visitas</h3>
+                <div id="visits-detail" class="detail-list"></div>
+            </section>
+
+            <section id="panel-conversations" class="panel">
+                <h2>IPs con mensajes</h2>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>IP</th>
+                                <th>Mensajes</th>
+                                <th>Sesiones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="convs-by-ip"></tbody>
+                    </table>
+                </div>
+                <h3>Hilo de conversación</h3>
+                <div id="convs-detail" class="detail-list"></div>
+            </section>
+        </main>
+    </div>
+
+    <script src="/static/js/admin.js"></script>
+</body>
+</html>
