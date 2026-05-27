@@ -1,26 +1,45 @@
-# Admin
+# Cristian Serrato Control Center
 
-Admin sera la web app central para portafolio publico y administracion privada de proyectos.
+Plataforma principal para `cristianserrato.online`: portafolio publico premium y dashboard administrativo privado para servidor, servicios y proyectos.
 
-## Vision
+## Stack
 
-La portada publica funcionara como hoja de vida tecnica: resumen de cada proyecto, tecnologias utilizadas, estado, enlaces a repositorios y enlaces a dominios cuando esten definidos.
+- Next.js, React, TypeScript, TailwindCSS
+- Framer Motion, Lucide Icons, Recharts
+- Servidor Node/Express custom con Socket.IO
+- JWT en cookie httpOnly, Helmet y rate limiting
+- Metricas de VPS Linux, systemd, Docker, PostgreSQL y health checks por dominio
 
-La zona privada centralizara paneles operativos con autenticacion reforzada. La autenticacion en dos pasos queda definida como siguiente fase.
+## Desarrollo
 
-## Estructura inicial
-
-```text
-apps/server-dashboard/          Dashboard actual de metricas del servidor.
-apps/cerbis-conversations/      Base del panel de conversaciones y analiticas Cerbis.
-docs/                           Arquitectura y plan de integracion.
+```bash
+npm install
+cp .env.example .env.local
+npm run dev
 ```
 
-## Modulos actuales
+Variables minimas:
 
-- Server Dashboard: consumo de recursos, servicios, disco, memoria, procesos y estado del host.
-- Cerbis Conversations: panel administrativo y analiticas base para conversaciones del asistente.
+```bash
+ADMIN_ACCESS_TOKEN=token-largo
+JWT_SECRET=secreto-largo
+PORT=3010
+```
+
+## Produccion
+
+```bash
+npm run build
+npm run start
+```
+
+Rutas:
+
+- `/`: portafolio publico.
+- `/admin`: login privado y dashboard en tiempo real.
+- `/api/admin/*`: endpoints protegidos.
+- `/ws`: WebSocket de telemetria.
 
 ## Seguridad
 
-No se versionan tokens, `.env`, bases de datos ni logs. La zona privada debe integrarse con autenticacion, roles y 2FA antes de exponer datos sensibles.
+No se versionan `.env`, tokens, bases de datos ni logs. El token de administrador debe vivir en variables de entorno del servidor o secret manager.

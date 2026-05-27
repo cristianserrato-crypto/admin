@@ -11,6 +11,8 @@ __pycache__/
 .venv/
 venv/
 node_modules/
+.next/
+tsconfig.tsbuildinfo
 dist/
 build/
 .DS_Store
