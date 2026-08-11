@@ -2,9 +2,10 @@ export type Project = {
   name: string;
   domain: string;
   summary: string;
-  status: "Produccion" | "Activo" | "En evolucion";
+  status: "Produccion" | "Activo" | "En evolucion" | "Offline";
   icon: "boxes" | "bot" | "finance" | "gem";
   accent: string;
+  backgroundImage?: string;
   stats: { label: string; value: string }[];
   technologies: string[];
   details: {
@@ -17,12 +18,13 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    name: "Majic3D",
+    name: "Majic.3D",
     domain: "majic3d.online",
     summary: "Emprendimiento de impresion 3D personalizado, prototipado y diseno generativo.",
     status: "Activo",
     icon: "boxes",
     accent: "from-cyan-300 to-blue-500",
+    backgroundImage: "/project-backgrounds/majic.png",
     technologies: ["Web", "Diseno 3D", "Automatizacion", "IA generativa"],
     stats: [
       { label: "Linea", value: "3D" },
@@ -43,6 +45,7 @@ export const projects: Project[] = [
     status: "En evolucion",
     icon: "bot",
     accent: "from-sky-300 to-cyan-400",
+    backgroundImage: "/project-backgrounds/cerbis.png",
     technologies: ["OpenAI", "Gemini", "Python", "WebSockets", "IA conversacional"],
     stats: [
       { label: "Avatar", value: "Holograma" },
@@ -63,6 +66,7 @@ export const projects: Project[] = [
     status: "Produccion",
     icon: "finance",
     accent: "from-blue-400 to-indigo-500",
+    backgroundImage: "/project-backgrounds/fincsdash.png",
     technologies: ["React", "PostgreSQL", "APIs", "Backend analytics"],
     stats: [
       { label: "Datos", value: "SQL" },
@@ -80,14 +84,14 @@ export const projects: Project[] = [
     name: "Serata",
     domain: "serata.online",
     summary: "Marca digital de joyeria premium con catalogo visual, branding elegante y experiencia ecommerce.",
-    status: "Activo",
+    status: "Offline",
     icon: "gem",
     accent: "from-cyan-200 to-slate-100",
     technologies: ["Ecommerce", "UI/UX", "Automatizacion", "Branding"],
     stats: [
       { label: "Marca", value: "Premium" },
       { label: "Vista", value: "Catalogo" },
-      { label: "UX", value: "Minimal" },
+      { label: "Estado", value: "Offline" },
     ],
     details: {
       architecture: "Sitio orientado a catalogo, conversion visual y futuras integraciones de compra.",

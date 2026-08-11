@@ -38,6 +38,10 @@ async function main() {
   }));
   server.use(express.json({ limit: "64kb" }));
   server.use(cookieParser());
+  server.use("/project-backgrounds", express.static("public/project-backgrounds", {
+    immutable: true,
+    maxAge: "30d",
+  }));
 
   const authLimiter = rateLimit({
     windowMs: 60_000,

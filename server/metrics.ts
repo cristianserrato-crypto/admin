@@ -81,7 +81,6 @@ async function services(): Promise<ServiceState[]> {
     "cloudflared.service",
     "postgresql@16-main.service",
     "ia-amigo.service",
-    "fincsdash-monitor.service",
     "majic3d-landing.service",
   ];
   const rows = await Promise.all(
@@ -223,4 +222,3 @@ export async function collectMetrics() {
     logs,
   };
 }
-
